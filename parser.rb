@@ -11,8 +11,13 @@ class Parser
     unique_visits = {}
     log.each do |line|
       line_array = line.split(' ')
-      unique_visits["#{line_array[0]}"] && !unique_visits["#{line_array[0]}"].include?(line_array[1]) ?
-      unique_visits["#{line_array[0]}"] << line_array[1] : unique_visits["#{line_array[0]}"] = [line_array[1]]
+      if unique_visits["#{line_array[0]}"]
+        if !unique_visits["#{line_array[0]}"].include?("#{line_array[1]}") 
+          unique_visits["#{line_array[0]}"] << "#{line_array[1]}" 
+        end
+      else
+        unique_visits["#{line_array[0]}"] = ["#{line_array[1]}"]
+      end
     end
     unique_visits = unique_visits.sort_by { |page, visits| visits.count }.reverse
     puts "List of webpages with most unique page views also ordered"
