@@ -7,6 +7,8 @@ class Parser
     unique_visits(log)
   end
 
+  # Each IP that visits a page is a unique visit, no matter how many times it's been accessed from that IP,
+  # each IP counts just once.
   def unique_visits(log)
     unique_visits = {}
     log.each do |line|
