@@ -3,15 +3,15 @@
 class Parser
   def parse
     log = load_log
-    totals = {}
+    page_visits = {}
     log.each do |line|
       line_array = line.split(' ')
-      totals["#{line_array[0]}"] ? totals["#{line_array[0]}"] += 1 : totals["#{line_array[0]}"] = 1
+      page_visits["#{line_array[0]}"] ? page_visits["#{line_array[0]}"] += 1 : page_visits["#{line_array[0]}"] = 1
     end
-    totals = totals.sort_by { |page, total| total }.reverse
+    page_visits = page_visits.sort_by { |page, visits| visits }.reverse
     puts "List of webpages with most page views ordered from most pages views to less page views"
-    totals.each do |total|
-      puts "\t#{total[0]} #{total[1]} #{total[1] ==1 ? "visit" : "visits"}"
+    page_visits.each do |page_visit|
+      puts "\t#{page_visit[0]} #{page_visit[1]} #{page_visit[1] ==1 ? "visit" : "visits"}"
     end
   end
 
