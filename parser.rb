@@ -3,6 +3,25 @@
 class Parser
   def parse
     log = load_log
+    page_visits(log)
+    unique_visits(log)
+  end
+
+  def unique_visits(log)
+    unique_visits = {}
+    log.each do |line|
+      line_array = line.split(' ')
+      unique_visits["#{line_array[0]}"] && !unique_visits["#{line_array[0]}"].include?(line_array[1]) ?
+      unique_visits["#{line_array[0]}"] << line_array[1] : unique_visits["#{line_array[0]}"] = [line_array[1]]
+    end
+    unique_visits = unique_visits.sort_by { |page, visits| visits.count }.reverse
+    puts "List of webpages with most unique page views also ordered"
+    unique_visits.each do |unique_visit|
+      puts "\t#{unique_visit[0]} #{unique_visit[1].count} #{unique_visit[1].count ==1 ? "visit" : "visits"}"
+    end
+  end
+
+  def page_visits(log)
     page_visits = {}
     log.each do |line|
       line_array = line.split(' ')
