@@ -1,3 +1,17 @@
+Ruby Developer Test
+Before you start coding (and let’s be honest, we know that’s what you want to do), please read
+the following.
+Firstly, the test should take you no more than 2.5 hours to complete.
+Secondly, the test is for us to see how you code and the methodologies you use, what we will be
+looking for in this test are the following:
+● Functionality
+● Efficiency – We like clean, simple code.
+● Readability
+● Tests (we have 96% test coverage in our code and we aim to keep it that way).
+● Also, we would like to understand your ability to use TDD and OO, so please ensure
+these are part of your complete test.
+● Feel free to submit your solution as a link to your version control repository
+
 1. Ruby Log Parser
 
 Write a ruby script that:
